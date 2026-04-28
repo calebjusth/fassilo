@@ -1,23 +1,173 @@
+---
+import '../styles/global.css';
+
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+
+// Category data for the Mega Menu
+const categories = [
+    { name: "Home", img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800" },
+    { name: "Closets", img: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&q=80&w=800" },
+    { name: "Exterior doors", img: "https://images.unsplash.com/photo-1510076857177-7470076d4098?auto=format&fit=crop&q=80&w=800" },
+    { name: "Interior doors", img: "https://images.unsplash.com/photo-1506377247377-2a5b3b0ca7df?auto=format&fit=crop&q=80&w=800" },
+    { name: "Kitchen cabinets", img: "https://images.unsplash.com/photo-1556912177-450034b75a43?auto=format&fit=crop&q=80&w=800" },
+    { name: "Stair solutions", img: "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=800" },
+    { name: "Parquet", img: "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&q=80&w=800" },
+    { name: "Office solutions", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" },
+    { name: "Bank solutions", img: "https://images.unsplash.com/photo-1626178793926-22b28830aa30?auto=format&fit=crop&q=80&w=800" },
+];
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Fassilo Woodworks - Premium Craftsmanship" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <title>{title}</title>
+    </head>
+    <body class="bg-wall text-ebony antialiased">
+        
+        <nav id="main-nav" class="sticky top-0 z-[100] border-b border-black bg-wall/80 backdrop-blur-md">
+            <div class="mx-auto flex max-w-[1440px] items-center justify-between px-2 py-1 md:px-8">
+                
+                <div class="flex-shrink-0">
+                    <a href="/" class="group">
+                        <img src="/logo.png" alt="Fassilo Woodworks" class="w-32 md:w-35" />
+                    </a>
+                </div>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+                <div class="hidden items-center gap-12 md:flex">
+                    <div class="group/menu relative">
+                        <button id="products-btn" class="font-medium hover:text-brand-orange transition-colors flex items-center gap-1 py-2">
+                            Products
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform group-hover/menu:rotate-180"><path d="m6 9 6 6 6-6"/></svg>
+                        </button>
+                        
+                        <div id="mega-menu" class="invisible opacity-0 group-hover/menu:visible group-hover/menu:opacity-100 absolute top-full left-1/2 -translate-x-1/2 w-[90vw] max-w-[1200px] bg-wall border border-black transition-all duration-300 ease-out flex overflow-hidden">
+                            <div class="w-1/2 p-12 border-r border-black/10">
+                                <ul class="space-y-4">
+                                    {categories.map((cat) => (
+                                        <li>
+                                            <a 
+                                                href={`/products/${cat.name.toLowerCase().replace(' ', '-')}`} 
+                                                class="nav-item text-display-lg font-bold hover:text-brand-orange transition-all duration-200 block"
+                                                data-img={cat.img}
+                                            >
+                                                {cat.name}
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div class="w-1/2 relative bg-clay/20 overflow-hidden">
+                                <img id="menu-image" src={categories[0].img} alt="Preview" class="absolute inset-0 h-full w-full object-cover transition-opacity duration-500" />
+                                <div class="absolute inset-0 bg-black/10"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/projects" class="font-medium hover:text-brand-orange transition-colors">Custom Works</a>
+                    <a href="/story" class="font-medium hover:text-brand-orange transition-colors">Our Story</a>
+                </div>
+
+                <div class="flex items-center gap-4 md:gap-6">
+                    <button class="hover:text-brand-orange transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    </button>
+                    <button class="hover:text-brand-orange transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    </button>
+                    
+                    <button id="mobile-menu-btn" class="md:hidden hover:text-brand-orange transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="mobile-overlay" class="fixed inset-0 top-[76px] z-40 hidden bg-wall px-6 py-12 md:hidden">
+                <ul class="space-y-8">
+                    <li><a href="/shop" class="text-display-lg font-bold uppercase tracking-tighter">Products</a></li>
+                    <li><a href="/projects" class="text-display-lg font-bold uppercase tracking-tighter">Custom Works</a></li>
+                    <li><a href="/story" class="text-display-lg font-bold uppercase tracking-tighter">Our Story</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <main>
+            <slot />
+        </main>
+
+        <footer class="bg-brand-orange mt-24 px-6 pt-24 pb-12 md:px-12">
+            <div class="mx-auto max-w-[1440px]">
+                <div class="grid grid-cols-1 gap-12 lg:grid-cols-12">
+                    <div class="lg:col-span-4">
+                        <h2 class="text-ebony text-display-xl font-bold mb-6">the right amount of wood.</h2>
+
+                    </div>
+                    <div class="grid grid-cols-2 gap-8 md:grid-cols-4 lg:col-span-8 text-ebony">
+                        <div class="space-y-4">
+                            <p class="text-caption font-bold uppercase tracking-widest opacity-50">Nav</p>
+                            <ul class="space-y-2 font-medium">
+                                <li><a href="/" class="hover:underline">Home</a></li>
+                                <li><a href="/shop" class="hover:underline">Shop</a></li>
+                                <li><a href="/about" class="hover:underline">Our Story</a></li>
+                            </ul>
+                        </div>
+                        <div class="space-y-4">
+                            <p class="text-caption font-bold uppercase tracking-widest opacity-50">Help</p>
+                            <ul class="space-y-2 font-medium">
+                                <li><a href="/faq" class="hover:underline">FAQs</a></li>
+                                <li><a href="/contact" class="hover:underline">Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <div class="space-y-4">
+                            <p class="text-caption font-bold uppercase tracking-widest opacity-50">Socials</p>
+                            <ul class="space-y-2 font-medium">
+                                <li><a href="#" class="hover:underline">Instagram</a></li>
+                                <li><a href="#" class="hover:underline">Facebook</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-20 ">
+                    <h1 class="text-wall text-[clamp(3rem,20vw,22rem)] font-bold leading-[0.8] tracking-tighter text-center uppercase pointer-events-none select-none">Fassilo</h1>
+                </div>
+                <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-ebony/10 pt-8 text-caption font-medium md:flex-row">
+                    <p>© 2026 Fassilo Woodworks. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            // Mega Menu Image Switcher
+            const navItems = document.querySelectorAll('.nav-item');
+            const menuImage = document.getElementById('menu-image');
+
+            navItems.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    const newImg = item.getAttribute('data-img');
+                    if (menuImage) {
+                        menuImage.style.opacity = '0';
+                        setTimeout(() => {
+                            (menuImage as HTMLImageElement).src = newImg || '';
+                            menuImage.style.opacity = '1';
+                        }, 150);
+                    }
+                });
+            });
+
+            // Mobile Menu Toggle
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const overlay = document.getElementById('mobile-overlay');
+
+            mobileBtn?.addEventListener('click', () => {
+                overlay?.classList.toggle('hidden');
+                document.body.classList.toggle('overflow-hidden');
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,74 @@
+---
+const clients = [
+  { name: "Abyssinia Coffee", src: "/assets/abyssinia.coffee.png" },
+  { name: "Al Fish Construction", src: "/assets/al.fish.construction.png" },
+  { name: "EEPCO", src: "/assets/eepco.png" },
+  { name: "Gift Real Estate", src: "/assets/gift.real.estate.png" },
+  { name: "MGK", src: "/assets/mgk.png" },
+  { name: "National Marketers", src: "/assets/national-marketers.png" },
+  { name: "Noah Real Estate", src: "/assets/noah.real.estate.png" },
+  { name: "Best Western", src: "/assets/best.western.png" },
+];
+
+const capabilities = [
+  { 
+    title: "Architectural Doors", 
+    desc: "Bespoke security and elegance for high-traffic corporate entrances and luxury private estates.",
+    img: "/assets/doors.png",
+    bg: "bg-ebony" 
+  },
+  { 
+    title: "Modern Kitchens", 
+    desc: "Precision cabinetry engineered for seamless integration in high-end residential culinary spaces.",
+    img: "/assets/kitchen.jpg",
+    bg: "bg-[#121212]" 
+  },
+  { 
+    title: "Office Solutions", 
+    desc: "Executive boardroom furniture designed to command authority and facilitate peak professional performance.",
+    img: "/assets/table.jpg",
+    bg: "bg-[#0A0A0A]" 
+  }
+];
+---
+
+<section class="bg-wall">
+    <div class="mx-auto max-w-[1440px] px-6 py-32 md:px-12">
+        <h1 class="text-display-xl  text-ebony mb-16">Trusted Partners</h1>
+        <div class="grid grid-cols-2 gap-12 md:grid-cols-4 lg:grid-cols-8 items-center ">
+            {clients.map((logo) => (
+                <div class="flex justify-center">
+                    <img src={logo.src} alt={logo.name} class="h-20 w-auto object-contain md:h-14" />
+                </div>
+            ))}
+        </div>
+    </div>
+
+
+    <div class="relative w-full">
+        {capabilities.map((item, index) => (
+            <div 
+                class={`sticky top-0 w-full h-screen flex items-center justify-center overflow-hidden border-t border-wall/5 ${item.bg}`}
+                style={`z-index: ${index + 1};`}
+            >
+                <div class="absolute inset-0 z-0">
+                    <img src={item.img} alt="" class="w-full h-full object-cover grayscale-[20%] opacity-50" />
+                </div>
+
+                <div class="relative z-10 w-full h-full max-w-[1440px] grid grid-cols-1 md:grid-cols-12 items-end pb-20 px-6 md:px-12">
+                    <div class="md:col-span-7">
+                        <h3 class="text-display-lg text-wall uppercase">
+                            {item.title}
+                        </h3>
+                    </div>
+                    
+                    <div class="md:col-start-9 md:col-span-4">
+                        <p class="text-body-lg text-wall/80 font-medium leading-relaxed">
+                            {item.desc}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>

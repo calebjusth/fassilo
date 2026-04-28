@@ -1,0 +1,50 @@
+---
+/* Using high-detail wood textures to reinforce the 'Durability' message */
+const detailImage = "https://images.unsplash.com/photo-1610593414660-599996d8e356?auto=format&fit=crop&q=80&w=800";
+---
+
+<section class="bg-wall py-24 px-6 md:px-12">
+    <div class="mx-auto max-w-[1440px]">
+        
+        <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[500px]">
+            
+            <div class="md:col-span-1 md:row-span-2 border-2 border-ebony p-8 flex flex-col justify-between bg-white">
+                <div>
+                    <span class="text-brand-orange font-bold tracking-widest text-sm uppercase">Legacy</span>
+                    <h3 class="text-display-md mt-6">Decades of <br/>Service.</h3>
+                </div>
+                <p class="text-body-md text-ebony/70 leading-relaxed">
+                    It is an immense pleasure when a client we supplied decades ago calls us to maintain our earlier works.
+                </p>
+            </div>
+
+            <div class="md:col-span-1 border-2 border-ebony p-8 flex flex-col justify-center items-center text-center bg-ebony text-wall">
+                <span class="text-display-xl leading-none">30+</span>
+                <p class="text-caption font-bold uppercase tracking-widest mt-4">Years Experience</p>
+            </div>
+
+            <div class="md:col-span-2 relative overflow-hidden border-2 border-ebony">
+                <img src={detailImage} alt="Woodwork Detail" class="w-full h-full object-cover grayscale-[30%]" />
+                <div class="absolute inset-0 bg-ebony/20"></div>
+                <div class="absolute bottom-6 left-6">
+                    <p class="text-wall font-bold uppercase tracking-[0.2em] text-xs">Premium Hardwoods Only</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-2 border-2 border-ebony p-10 flex items-center bg-white">
+                <h2 class="text-display-lg">
+                    Timeliness <br/>
+                    <span class="text-ebony">& Attention.</span>
+                </h2>
+            </div>
+
+            <div class="md:col-span-1 border-2 border-ebony p-8 flex flex-col justify-between bg-brand-orange text-ebony">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                <p class="font-bold uppercase tracking-tighter leading-tight text-lg">
+                    Due attention <br/> to your needs.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>

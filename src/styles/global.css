@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-brand-orange: #FF9C00;
+  --color-ebony: #1a1a1b;
+  --color-wall: #f9f7f2;
+  --color-clay: #e5e0d5;
+
+  /* Fonts */
+  --font-display: "Boldonse", sans-serif;
+  --font-body: "Satoshi", sans-serif;
+
+  /* Custom Font Scales (Slightly larger than standard) */
+  --text-display-2xl: 4.5rem; /* Massive hero titles */
+  --text-display-xl: 3.25rem;  /* Section headings */
+  --text-display-lg: 2.25rem;  /* Sub-headings */
+  
+  --text-body-lg: 1.25rem;     /* Standard body copy */
+  --text-body-base: 1.125rem;  /* Slightly smaller body */
+  
+  --text-caption: 0.95rem;     /* Disclaimers / Small labels */
+}
+
+/* --- Font Face Declarations --- */
+@font-face {
+  font-family: 'Boldonse';
+  src: url('/fonts/Boldonse-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- Base Styles --- */
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-wall);
+    color: var(--color-ebony);
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.25;
+    text-wrap: balance;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+
+  /* Global Shadow Strip */
+  * {
+    box-shadow: none !important;
+  }
+
+  /* Premium Focus States */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-orange);
+    outline-offset: 4px;
+  }
+}
+
+/* --- Utility Classes for Convenience --- */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .section-padding {
+    @apply py-24 px-6 md:px-12;
+  }
+}

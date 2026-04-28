@@ -1,0 +1,44 @@
+---
+/* We'll use a high-end woodworking shot. 
+  Note: In production, replace this with a local optimized image.
+*/
+const heroImage = "/assets/hero.png";
+---
+
+<section class="relative h-[100vh] w-full overflow-hidden border-b border-black">
+    <div class="absolute inset-0 z-0">
+        <img 
+            src={heroImage} 
+            alt="Handcrafted premium woodwork details" 
+            class="h-full w-full object-cover grayscale-[20%]"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-ebony/60 via-transparent to-transparent"></div>
+    </div>
+
+    <div class="relative z-10 mx-auto flex h-full max-w-[1440px] flex-col justify-end px-6 pb-12 md:px-12 md:pb-20">
+        
+        <div class="flex flex-col items-end justify-between gap-8 md:flex-row md:items-end">
+            
+            <div class="max-w-2xl">
+                <h2 class="text-wall text-display-xl font-bold mb-4">
+                    Precision <br /> 
+                    Built to <span class="text-brand-orange">Last.</span>
+                </h2>
+                <p class="text-wall/90 max-w-md font-medium">
+                    Bespoke cabinetry and architectural woodwork for spaces that demand distinction.
+                </p>
+            </div>
+
+            <div class="flex flex-col items-start gap-4 md:items-end border-1 border-ebony">
+                <a 
+                    href="/contact" 
+                    class="group relative overflow-hidden bg-brand-orange px-10 py-5 font-bold uppercase tracking-widest text-ebony transition-all hover:bg-wall"
+                >
+                    <span class="relative z-10">Contact Us</span>
+                    <div class="absolute inset-0 z-0 translate-y-full bg-wall transition-transform duration-300 group-hover:translate-y-0"></div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
